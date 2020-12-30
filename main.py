@@ -109,11 +109,6 @@ def sc(event):
                 result = str(m.e)
             else:
                 result = str(float(no) * m.e)
-        if text == 'twopw':
-            if no == '':
-                result = str(m.pi)
-            else:
-                result = str(float(no) * m.pi)
         if text == '2^':
             if no == '':
                 result = "2**"
@@ -124,6 +119,8 @@ def sc(event):
                 result = "10**"
             else:
                 result = str(10**float(no))
+        if text == '^2':
+            result = str(float(no)**2)
     except Exception:
         result = "Syntax Error"
 
@@ -142,7 +139,8 @@ exp = Button(TAB2, text='exp', padx=22, pady=10, relief=RAISED, bg="Black", fg="
 ceil = Button(TAB2, text='ceil', padx=24, pady=10, relief=RAISED, bg="Black", fg="White")
 floor = Button(TAB2, text='floor', padx=20, pady=10, relief=RAISED, bg="Black", fg="white")
 
-square = Button(TAB2, text="^2", padx=26, pady=10, relief=RAISED, bg="Black", fg="White", command=lambda: click("**2"))
+square = Button(TAB2, text="^2", padx=26, pady=10, relief=RAISED, bg="Black", fg="White")
+square.bind("<Button-1>", sc)
 frac = Button(TAB2, text="1/x", padx=23, pady=10, relief=RAISED, bg="Black", fg="White")
 frac.bind("<Button-1>", sc)
 absb = Button(TAB2, text="|x|", padx=26, pady=10, relief=RAISED, bg="black", fg='white', command=lambda: click("abs("))
@@ -243,7 +241,8 @@ frac = Button(TAB1, text="1/x", padx=33, pady=15, relief=RAISED, bg="Black", fg=
 frac.bind("<Button-1>", sc)
 fact = Button(TAB1, text="x!", padx=35, pady=15, relief=RAISED,bg="Black", fg="White")
 fact.bind("<Button-1>", sc)
-square = Button(TAB1, text="^2", padx=35, pady=15, relief=RAISED, bg="Black", fg="White", command=lambda: click("**2"))
+square = Button(TAB1, text="^2", padx=35, pady=15, relief=RAISED, bg="Black", fg="White")
+square.bind("<Button-1>", sc)
 sqrtm = Button(TAB1, text='√x', padx=35, pady=15, relief=RAISED, bg="Black", fg="White")
 sqrtm.bind("<Button-1>", sc)
 
@@ -323,7 +322,7 @@ tanh = Button(TAB3, text='tanh', padx=28, pady=10, relief=RAISED, bg='black', fg
 tanh.bind("<Button-1>", sc)
 degb = Button(TAB3, text='deg', padx=29, pady=10, relief=RAISED, bg='black', fg='white')
 degb.bind("<Button-1>", sc)
-radb = Button(TAB3, text='radb', padx=29, pady=10, relief=RAISED, bg='black', fg='white')
+radb = Button(TAB3, text='rad', padx=31, pady=10, relief=RAISED, bg='black', fg='white')
 radb.bind("<Button-1>", sc)
 pib = Button(TAB3, text="pi", padx=34, pady=10, relief=RAISED, bg="Black", fg="White")
 pib.bind("<Button-1>", sc)
