@@ -36,96 +36,103 @@ def bksps():
     e.delete(length, END)
 
 def evaluate():
-    ans = e.get()
-    ans = eval(ans)
+    try:
+        ans = e.get()
+        ans = eval(ans)
+    except Exception:
+        ans = "Syntax Error"
+
     e.delete(0, END)
     e.insert(0, ans)
 
 def sc(event):
-    key = event.widget
-    text = key['text']
-    no = e.get()
-    result = ''
-    if text == 'deg':
-        result = str(m.degrees(float(no)))
-    if text == 'rad':
-        result = str(m.radians(float(no)))
-    if text == 'rand':
-        result = str(rand.random())
-    if text == 'ceil':
-        result = str(m.ceil(no))
-    if text == 'floor':
-        result = str(m.floor(no))
-    if text == 'sin':
-        result = str(m.sin(float(no)))
-    if text == 'cos':
-        result = str(m.cos(float(no)))
-    if text == 'tan':
-        result = str(m.tan(float(no)))
-    if text == 'sinh':
-        result = str(m.sinh(float(no)))
-    if text == 'asin':
-        result = str(m.asin(float(no)))
-    if text == 'asinh':
-        result = str(m.asinh(float(no)))
-    if text == 'cos':
-        result = str(m.cos(float(no)))
-    if text == 'cosh':
-        result = str(m.cosh(float(no)))
-    if text == 'acos':
-        result = str(m.acos(float(no)))
-    if text == 'acosh':
-        result = str(m.acosh(float(no)))
-    if text == 'tan':
-        result = str(m.tan(float(no)))
-    if text == 'tanh':
-        result = str(m.tanh(float(no)))
-    if text == 'atan':
-        result = str(m.atan(float(no)))
-    if text == 'atanh':
-        result = str(m.atanh(float(no)))
-    if text == 'lg':
-        result = str(m.log10(float(no)))
-    if text == 'ln':
-        result = str(m.log(float(no)))
-    if text == 'sqrt':
-        result = str(m.sqrt(float(no)))
-    if text == 'x!':
-        result = str(m.factorial(float(no)))
-    if text == '1/x':
-        result = str(1/(float(no)))
-    if text == 'pi':
-        if no == '':
-            result = str(m.pi)
-        else:
-            result = str(float(no) * m.pi)
-    if text == 'e':
-        if no == '':
-            result = str(m.e)
-        else:
-            result = str(float(no) * m.e)
-    if text == 'twopw':
-        if no == '':
-            result = str(m.pi)
-        else:
-            result = str(float(no) * m.pi)
-    if text == '2^':
-        if no == '':
-            result = "2**"
-        else:
-            result = str(2**float(no))
-    if text == '10^':
-        if no == '':
-            result = "10**"
-        else:
-            result = str(10**float(no))
+    try:
+        key = event.widget
+        text = key['text']
+        no = e.get()
+        result = ''
+        if text == 'deg':
+            result = str(m.degrees(float(no)))
+        if text == 'rad':
+            result = str(m.radians(float(no)))
+        if text == 'rand':
+            result = str(rand.random())
+        if text == 'ceil':
+            result = str(m.ceil(no))
+        if text == 'floor':
+            result = str(m.floor(no))
+        if text == 'sin':
+            result = str(m.sin(float(no)))
+        if text == 'cos':
+            result = str(m.cos(float(no)))
+        if text == 'tan':
+            result = str(m.tan(float(no)))
+        if text == 'sinh':
+            result = str(m.sinh(float(no)))
+        if text == 'asin':
+            result = str(m.asin(float(no)))
+        if text == 'asinh':
+            result = str(m.asinh(float(no)))
+        if text == 'cos':
+            result = str(m.cos(float(no)))
+        if text == 'cosh':
+            result = str(m.cosh(float(no)))
+        if text == 'acos':
+            result = str(m.acos(float(no)))
+        if text == 'acosh':
+            result = str(m.acosh(float(no)))
+        if text == 'tan':
+            result = str(m.tan(float(no)))
+        if text == 'tanh':
+            result = str(m.tanh(float(no)))
+        if text == 'atan':
+            result = str(m.atan(float(no)))
+        if text == 'atanh':
+            result = str(m.atanh(float(no)))
+        if text == 'lg':
+            result = str(m.log10(float(no)))
+        if text == 'ln':
+            result = str(m.log(float(no)))
+        if text == '√x':
+            result = str(m.sqrt(float(no)))
+        if text == 'x!':
+            result = str(m.factorial(float(no)))
+        if text == '1/x':
+            result = str(1/(float(no)))
+        if text == 'pi':
+            if no == '':
+                result = str(m.pi)
+            else:
+                result = str(float(no) * m.pi)
+        if text == 'e':
+            if no == '':
+                result = str(m.e)
+            else:
+                result = str(float(no) * m.e)
+        if text == 'twopw':
+            if no == '':
+                result = str(m.pi)
+            else:
+                result = str(float(no) * m.pi)
+        if text == '2^':
+            if no == '':
+                result = "2**"
+            else:
+                result = str(2**float(no))
+        if text == '10^':
+            if no == '':
+                result = "10**"
+            else:
+                result = str(10**float(no))
+    except Exception:
+        result = "Syntax Error"
 
     e.delete(0, END)
     e.insert(0, result)
 
 '''------------------------------------------------------------------------------------------------------'''
 ac = Button(TAB2, text='C', padx=29, pady=10, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: clear())
-bksp = Button(TAB2, text='bksp', padx=19.45, pady=10, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
+bksp = Button(TAB2, text='⌫', padx=24, pady=10, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
 
 twopw = Button(TAB2, text='2^', padx=26, pady=10, relief=RAISED, bg="Black", fg="White")
 twopw.bind("<Button-1>", sc)
@@ -230,7 +237,7 @@ plus.grid(row=8, column=4)
 '''------------------------------------------------------------------------------------------------------'''
 
 ac = Button(TAB1, text='C', padx=36.5, pady=15, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: clear())
-bksp = Button(TAB1, text='bksp', padx=30, pady=15, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
+bksp = Button(TAB1, text='⌫', padx=35, pady=15, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
 
 frac = Button(TAB1, text="1/x", padx=33, pady=15, relief=RAISED, bg="Black", fg="White")
 frac.bind("<Button-1>", sc)
@@ -310,7 +317,7 @@ acosh = Button(TAB3, text='acosh', padx=25, pady=10, relief=RAISED, bg='black', 
 acosh.bind("<Button-1>", sc)
 atanh = Button(TAB3, text='atanh', padx=25, pady=10, relief=RAISED, bg='black', fg='white')
 atanh.bind("<Button-1>", sc)
-bksp = Button(TAB3, text='bksp', padx=25, pady=10, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
+bksp = Button(TAB3, text='⌫', padx=30, pady=10, relief=RAISED, bg="#C82C0B", fg="White", command=lambda: bksps())
 
 tanh = Button(TAB3, text='tanh', padx=28, pady=10, relief=RAISED, bg='black', fg='white')
 tanh.bind("<Button-1>", sc)
@@ -320,7 +327,7 @@ radb = Button(TAB3, text='radb', padx=29, pady=10, relief=RAISED, bg='black', fg
 radb.bind("<Button-1>", sc)
 pib = Button(TAB3, text="pi", padx=34, pady=10, relief=RAISED, bg="Black", fg="White")
 pib.bind("<Button-1>", sc)
-div = Button(TAB3, text='/', padx=35, pady=10, relief=RAISED, bg="Black", fg="White", command=lambda: click("/"))
+div = Button(TAB3, text='/', padx=36, pady=10, relief=RAISED, bg="Black", fg="White", command=lambda: click("/"))
 
 sin = Button(TAB3, text='sin', padx=32, pady=10, relief=RAISED, bg='black', fg='white')
 sin.bind("<Button-1>", sc)
@@ -386,7 +393,6 @@ plus.grid(row=6, column=4)
 dot.grid(row=7, column=1)
 zero.grid(row=7, column=2)
 equal.grid(row=7, column=3)
-
 
 TAB1.mainloop()
 TAB2.mainloop()
